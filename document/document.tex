@@ -1,0 +1,72 @@
+\documentclass{article}  
+\usepackage{ctex} % 引入ctex包处理中文  
+\usepackage{fancyhdr} % 引入fancyhdr包来定制页眉和页脚  
+\usepackage{refcount} % 引入refcount包来获取标签的页码  
+\usepackage{lastpage}
+
+\pagestyle{plain} % 这是默认的页面样式，通常不显示页眉和页脚  
+\fancypagestyle{mainmatter}{  
+	\fancyhf{} % 清除默认的页眉和页脚设置  
+	\lhead{Team \# 2024062828349}  
+	\rhead{Page \thepage{} of \pageref{LastPage}} % 显示当前页码和最后一页的页码 
+	\fancyfoot[C]{\thepage} 
+} 
+\begin{document}  
+	
+	% 设置3号黑体并居中  
+	\begin{center}  
+		\fontsize{16pt}{19pt}\selectfont \textbf{2024年第三届“钉钉杯”大学生}  
+		
+		\fontsize{16pt}{19pt}\selectfont  
+		\textbf{大数据挑战赛论文}  
+		
+		% 题目  
+		\centering  
+		题 目：基于大数据分析的智能推荐系统研究  
+	\end{center}  
+	
+	% 摘要和关键字环境  
+	\begin{abstract}  
+		本文研究了基于大数据分析的智能推荐系统。首先，我们介绍了推荐系统的基本概念和重要性。然后，我们详细探讨了大数据在推荐系统中的应用，包括数据收集、处理和分析。最后，我们提出了一种新的推荐算法，并进行了实验验证。实验结果表明，我们的算法在推荐准确性和效率方面都有显著提升。  
+		
+		\textbf{关键字：} 大数据分析，智能推荐系统，推荐算法，实验验证  
+	\end{abstract}  
+	\newpage  
+	
+	% 目录  
+	\tableofcontents  
+	\newpage 
+	
+	\pagestyle{mainmatter}
+	\setcounter{page}{1}
+	\section{问题重述}  
+	\subsection{问题背景}
+	\subsection{数据分析}
+	\subsection{问题提出}  
+	\section{问题分析}  
+	\subsection{问题1分析}
+	\subsection{问题2分析}
+	\subsection{问题3分析}
+	\section{模型假设}  
+	\section{定义与符号说明}  
+	\section{模型的建立与求解}  
+	\subsection{问题1的模型建立与求解}  
+	\subsection{问题2的模型建立与求解}  
+	\subsection{问题3的模型建立与求解}  
+	\section{模型的评价及优化}  
+	\subsection{误差分析}  
+	\subsection{模型的优点}  
+	\subsection{模型的缺点}  
+	\subsection{模型的推广} 
+	\newpage
+	\pagestyle{plain}
+	\section{参考文献}
+	参考文献内容...  
+	\newpage % 新的一页开始  
+	\section{附录} 
+	附录内容...  
+	
+	
+	
+	
+\end{document}
