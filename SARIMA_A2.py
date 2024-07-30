@@ -8,7 +8,7 @@ plt.rcParams['font.sans-serif'] = ['SimHei']  # 使用SimHei字体
 plt.rcParams['axes.unicode_minus'] = False  # 正确显示负号
 
 # 加载数据
-file_path = 'C:/Users/34353/Desktop/2024年钉钉杯A题/A1.xlsx'
+file_path = 'C:/Users/34353/Desktop/2024年钉钉杯A题/A2.xlsx'
 data = pd.read_excel(file_path)
 
 # 提取时间序列数据
@@ -50,8 +50,8 @@ model_fit = model.fit(disp=False, maxiter=1000)  # 增加最大迭代次数
 model_fit.plot_diagnostics(figsize=(12, 8))
 plt.show()
 
-# 预测未来20步
-forecast = model_fit.get_forecast(steps=20)
+# 预测未来10步
+forecast = model_fit.get_forecast(steps=10)
 forecast_index = pd.date_range(start=sales_data.index[-1] + pd.DateOffset(months=1), periods=20, freq='MS')
 forecast_series = pd.Series(forecast.predicted_mean, index=forecast_index)
 
@@ -70,4 +70,4 @@ plt.show()
 forecast_df = forecast_series.reset_index()
 forecast_df.columns = ['月份', '预测销量（箱）']
 forecast_df.to_excel('a1f2.xlsx', index=False)  # 将预测结果保存为Excel文件
-print("预测结果已保存为 'a1f1.xlsx'")
+print("预测结果已保存为 'a1f22.xlsx'")

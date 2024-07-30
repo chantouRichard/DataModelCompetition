@@ -70,4 +70,4 @@ plt.show()
 forecast_df = forecast_series.reset_index()
 forecast_df.columns = ['月份', '预测销量（箱）']
 forecast_df.to_excel('a1f2.xlsx', index=False)  # 将预测结果保存为Excel文件
-print("预测结果已保存为 'a1f1.xlsx'")
+print("预测结果已保存为 'a1f21.xlsx'")
