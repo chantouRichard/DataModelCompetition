@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+from skimage.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_error
 from sklearn.preprocessing import MinMaxScaler
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
@@ -23,7 +25,6 @@ sales_volume = sales_volume.fillna(method='ffill')
 scaler = MinMaxScaler(feature_range=(0, 1))
 scaled_data = scaler.fit_transform(sales_volume.values.reshape(-1, 1))
 
-
 # 创建数据集
 def create_dataset(dataset, time_step=1):
     dataX, dataY = [], []
@@ -32,7 +33,6 @@ def create_dataset(dataset, time_step=1):
         dataX.append(a)
         dataY.append(dataset[i + time_step, 0])
     return np.array(dataX), np.array(dataY)
-
 
 # 设置时间步
 time_step = 12
@@ -64,6 +64,17 @@ test_predict = model.predict(X_test)
 # 反归一化
 train_predict = scaler.inverse_transform(train_predict)
 test_predict = scaler.inverse_transform(test_predict)
+y_train = scaler.inverse_transform(y_train.reshape(-1, 1))
+y_test = scaler.inverse_transform(y_test.reshape(-1, 1))
+
+# 计算评估指标
+train_mse = mean_squared_error(y_train, train_predict)
+train_mae = mean_absolute_error(y_train, train_predict)
+test_mse = mean_squared_error(y_test, test_predict)
+test_mae = mean_absolute_error(y_test, test_predict)
+
+print(f'训练集 MSE: {train_mse}, MAE: {train_mae}')
+print(f'测试集 MSE: {test_mse}, MAE: {test_mae}')
 
 # 准备预测未来的20个月数据
 x_input = scaled_data[-time_step:].reshape(1, -1)
